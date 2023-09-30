@@ -3,8 +3,6 @@
 ### Elevator pitch
 Last week I called my mom to ask for her pumpkin bread recipe... AGAIN. This happens around this time every year, but it doesn't need to. With Cookbook, users can easily share recipes with other users and request recipes from other users. Now, I don't need to call my mom every fall to get the same pumpkin bread recipe. Instead, I can surprise her with a freshly made loaf.
 ### Design
-![Mock](Cookbook.jpg)
-![Login](Cookbook_login.jgp)
 ### Key features
 - Secure login
 - Ability to create recipe requests.
