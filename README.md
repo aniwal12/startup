@@ -15,7 +15,7 @@ Last week I called my mom to ask for her pumpkin bread recipe... AGAIN. This hap
 - Ability to create recipe requests.
 - Ability to share recipes with other users.
 ### Technologies
-- **HTML** - Uses correct HTML structure. One page for login and one for sending and requesting recipes.
+- **HTML** - Uses correct HTML structure. One page for login, one for user recipes, one for sending recipes, and one for requesting recipes.
 - **CSS** - Style application to look good accross various devices and screen sizes, use good whitespace, and have good color contrast.
 - **JavaScript** - Provide login, display recipes, display option to send/request recipes from other users, display recipe requests. 
 - **Web Service** - Backend service with endpoints for:
@@ -27,3 +27,15 @@ Last week I called my mom to ask for her pumpkin bread recipe... AGAIN. This hap
 - **Database persistence** - Store users, recipes, and requests in database.
 - **WebSocket** - As a user shares a recipe, the recipe is broadcast to the intended recipient.
 - **Web Framework** - Application ported to use the React web framework.
+
+## HTML Deliverable
+
+I used HTML to build the basic structure of my application.
+
+- **HTML pages** - Four HTML pages that represent the ability to log in and send and receive recipes.
+- **Links** - The login in page automatically links to the recipe page. The recipe page has links for the send and request pages. The send page has links for the recipe and request pages. The request page has links for the recipe and send pages.
+- **Text** - Each of the recipes and recipe requests are represented by text.
+- **Images** - I included an image in the header of each page.
+- **Login** - Input box and submit button for login.
+- **Database** - The recipe page represents data pulled from the database.
+- **WebSocket** - The received requests and sent recipes represent the realtime communication.
