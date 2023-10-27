@@ -26,19 +26,34 @@
             </nav>
 
             </header>
+
             <main>
                 <h1>My Recipes</h1>
-                <ul>
-                    <li>
-                        <h2>White Chicken Chili</h2>
-                        <p>In large pot, saute 1 medium onion and 1 1/2 tsp garlic powder in 1 Tbsp. vegetable oil. Add 1 lb. of cooked, cubed chicken, 2 cans of Great Northern beans, rinsed and drained, 1 can of chicken broth, 2 cans of chopped green chilis, 1 tsp of salt, 1 tsp of ground cumin, 1 tsp of dried oregano, and 1/2 tsp pepper. Bring to a boil. Reduce heat. Simmer uncovered for 30 minutes. Remove from heat. Stir in 1 cup of sour cream and 1/2 cup of whipping cream.</p>
-                    </li>
-                    <li>
-                        <h2>Pumpkin Bread</h2>
-                        <p>Beat 2 eggs in a large mixing bowl. Add 3/4 c sugar, 3/4 c brown sugar, 1/2 c oil, and 1 1/2 c pumpkin. Mix well. In a separate bowl, combine 3/4 tsp salt, 1 tsp baking soda, 3/4 tsp cinnamon, 1/2 tsp nutmeg, and 1 3/4 c flour. Add to the pumpkin mixture with 1/2 tsp vanilla and mix well. Add 1/2 c semi-sweet chocolate chips. Stir well and pour into a greased loaf pan. Bake at 350 degrees for one hour.</p>
-                    </li>
-                </ul>
+
+                <div class="accordion" id="Recipes">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="recipe1">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">White Chicken Chili</button>
+                      </h2>
+                      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="recipe1" data-bts-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p>In large pot, saute 1 medium onion and 1 1/2 tsp garlic powder in 1 Tbsp. vegetable oil. Add 1 lb. of cooked, cubed chicken, 2 cans of Great Northern beans, rinsed and drained, 1 can of chicken broth, 2 cans of chopped green chilis, 1 tsp of salt, 1 tsp of ground cumin, 1 tsp of dried oregano, and 1/2 tsp pepper. Bring to a boil. Reduce heat. Simmer uncovered for 30 minutes. Remove from heat. Stir in 1 cup of sour cream and 1/2 cup of whipping cream.</p></div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="recipe2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Pumpkin Bread
+                        </button>
+                      </h2>
+                      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="recipe2" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p>Beat 2 eggs in a large mixing bowl. Add 3/4 c sugar, 3/4 c brown sugar, 1/2 c oil, and 1 1/2 c pumpkin. Mix well. In a separate bowl, combine 3/4 tsp salt, 1 tsp baking soda, 3/4 tsp cinnamon, 1/2 tsp nutmeg, and 1 3/4 c flour. Add to the pumpkin mixture with 1/2 tsp vanilla and mix well. Add 1/2 c semi-sweet chocolate chips. Stir well and pour into a greased loaf pan. Bake at 350 degrees for one hour.</p>
+                        </div>
+                      </div>
+                    </div>
+                    
             </main>
+
         <script 
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
