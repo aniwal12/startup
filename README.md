@@ -39,3 +39,12 @@ I used HTML to build the basic structure of my application.
 - **Login** - Input box and submit button for login.
 - **Database** - The recipe page represents data pulled from the database.
 - **WebSocket** - The received requests and sent recipes represent the realtime communication.
+
+## CSS Deliverable
+I used CSS to style my application.
+- **Header, footer, and main content body** - I changed the sizes of my header, footer, and main content body to better fit the appearance that I wanted my application to have. I also changed the background color and text color of my header and footer.
+- **Navigation elements** - I changed the spacing and color of my navigation elements. I also got rid of the underlines beneath the navigation elements.
+- **Responsive to window resizing** - I used flex to make sure that my application would look good on different window sizes. I made it so my header image and my footer are not displayed if the window is too small.
+- **Application elements** - I formatted all of my buttons and my table with the placeholders for recipe requests, and I added an accordion to better organize the user's recipe collection. I picked a good color scheme and used whitespace well.
+- **Application text content** - My fonts are consistent. Text size and color changes based on where the text is found.
+- **Application images** - I formatted the image found in the header to display only when the screen is large enough. I also changed the size so it adds to the aesthetics of the application without drawing away too much attention from application content.
