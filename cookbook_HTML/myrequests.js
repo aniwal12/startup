@@ -1,11 +1,19 @@
 document.addEventListener("DOMContentLoaded", function () {
     function loadRecipeRequests() {
+
+        const currentUser = localStorage.getItem('userName');
+        // if (!currentUser) {
+        //     return
+        // }
+
         let recipeRequests = [];
-        const requestsText = localStorage.getItem('recipeRequests');
+        const requestsText = localStorage.getItem('requests');
 
         if (requestsText) {
             recipeRequests = JSON.parse(requestsText);
         }
+
+        recipeRequests = recipeRequests.filter(nextElement => nextElement.username === currentUser);
 
         const requestsTable = document.querySelector('#requestsTable');
 
@@ -36,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         } else {
 
-                requestsTable.innerHTML = '<p>No recipe requests</p>';
+                requestsTable.innerHTML = '<p class="centered">No recipe requests</p>';
             }
         }
 

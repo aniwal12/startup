@@ -1,13 +1,19 @@
 document.addEventListener("DOMContentLoaded", function () {
     function loadRecipes() {
+
+        const currentUser = localStorage.getItem('username');
+
         let recipes = [];
+        
         const recipesText = localStorage.getItem('recipes');
 
         if (recipesText) {
             recipes = JSON.parse(recipesText);
         }
 
-        const recipesAccordion = document.querySelector('#Recipes');
+        recipes = recipes.filter(nextElement => nextElement.username === currentUser)
+
+        const recipesAccordion = document.getElementById('Recipes');
 
         if (recipes.length) {
             for (const [i, recipe] of recipes.entries()) {
@@ -49,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 recipesAccordion.appendChild(accordionItem);
             }
         } else {
-            recipesAccordion.innterHTML = '<p>No recipes available</p>'
+            recipesAccordion.innterHTML = '<p class="centered">No recipes available</p>'
         }
     }
 

@@ -153,6 +153,10 @@ table + h1 {
     margin-top: 20px;
 }
 
+.centered {
+    text-align: center;
+}
+
 footer {
     flex: 0 5px;
     text-align: center;
