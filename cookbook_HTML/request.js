@@ -1,7 +1,13 @@
-function makeRequest() {
-    const requestName = document.querySelector("#requestName");
-    localStorage.setItem("user1", requestName);
-    
-    const recipeName = document.querySelector("#recipeName");
-    localStorage.setItem("recipe1", recipeName);
-}
+document.getElementById('requestForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const requesteduser = document.getElementById('requestName').value;
+    const requestedRecipe = document.getElementById('recipeName').value;
+
+    console.log('Recipe request sent to ${requesteduser} for the recipe: ${requestedRecipe}');
+
+    localstorage.setItem(requesteduser.value, requestedRecipe.value);
+
+    document.getElementById('requestName').value = '';
+    document.getElementById('recipeName').value = '';
+});
