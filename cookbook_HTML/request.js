@@ -19,7 +19,7 @@ document.getElementById('requestForm').addEventListener('submit', function(event
         recipeName: requestedRecipe,
     })
 
-    localStorage.setItem('requests', requests);
+    localStorage.setItem('requests', JSON.stringify(requests));
 
     document.getElementById('requestName').value = '';
     document.getElementById('recipeName').value = '';

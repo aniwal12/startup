@@ -1,7 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
+
     function loadRecipes() {
 
-        const currentUser = localStorage.getItem('username');
+        const userWelcomeElement = document.getElementById('userWelcome');
+        if (userWelcomeElement) {
+            
+            const currentUser = localStorage.getItem('username');
+
+            if (currentUser) {
+                userWelcomeElement.textContent = `Welcome, ${currentUser}!`;
+            } else {
+                userWelcomeElement.textContent = 'Login to see your recipes'
+            }
+        }
 
         let recipes = [];
         
