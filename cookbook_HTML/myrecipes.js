@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 recipesAccordion.appendChild(accordionItem);
             }
         } else {
-            recipesAccordion.innterHTML = '<p class="centered">No recipes available</p>'
+            recipesAccordion.innerHTML = '<p class="centered">No recipes available</p>'
         }
     }
 
