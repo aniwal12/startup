@@ -28,13 +28,14 @@
             <hr />
         </header>
         <main>
+            <div id="userWelcome" class="username-display"></div>
             <h1>Request a Recipe</h1>
             <form id="requestForm" method="post" action="">
                 <label for="requestName">Request From:</label>
                 <input type="text" id="requestName" placeholder="User's name here" required>
                 <label for="recipeName">Recipe Name:</label>
                 <input type="text" id="recipeName" placeholder="Recipe name here" required>
-                <button type="submit">Request Recipe</button>
+                <button type="button" onclick="submitRequest()">Request Recipe</button>
             </form>
         </main>
         <script src="request.js"></script>

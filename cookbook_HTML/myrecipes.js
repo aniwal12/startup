@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const currentUser = localStorage.getItem('username');
 
             if (currentUser) {
-                userWelcomeElement.textContent = `Welcome, ${currentUser}!`;
+                userWelcomeElement.textContent = `User: ${currentUser}`;
             } else {
                 userWelcomeElement.textContent = 'Login to see your recipes'
             }

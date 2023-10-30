@@ -1,10 +1,18 @@
-document.addEventListener("DOMContentLoaded", function () {
-    function loadRecipeRequests() {
+//document.addEventListener("DOMContentLoaded", function () {
 
-        const currentUser = localStorage.getItem('userName');
-        // if (!currentUser) {
-        //     return
-        // }
+const userWelcomeElement = document.getElementById('userWelcome');
+        if (userWelcomeElement) {
+            
+            const currentUser = localStorage.getItem('username');
+
+            if (currentUser) {
+                userWelcomeElement.textContent = `User: ${currentUser}`;
+            } else {
+                userWelcomeElement.textContent = 'Login to send a recipe.'
+            }
+        }
+        
+function loadRecipeRequests() {
 
         let recipeRequests = [];
         const requestsText = localStorage.getItem('requests');
@@ -49,4 +57,4 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         loadRecipeRequests();
-});
+//});

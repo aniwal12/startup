@@ -28,6 +28,7 @@
             <hr />
         </header>
         <main>
+            <div id="userWelcome" class="username-display"></div>
             <h1>Recipe Requests</h1>
             <table id="requestsTable">
                 <thead>
@@ -61,7 +62,7 @@
                 <input type="text" id="recipeName" placeholder="Recipe name here" required>
                 <label for="recipeContent">Recipe:</label>
                 <input type="text" id="recipeContent" placeholder="Recipe here" required>
-                <button type="submit">Send Recipe</button>
+                <button type="button" onclick="sendRecipe()">Send Recipe</button>
             </form>
         </main>
         <script src="myrequests.js"></script>

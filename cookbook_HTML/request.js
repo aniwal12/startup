@@ -1,5 +1,18 @@
-document.getElementById('requestForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+// document.getElementById('requestForm').addEventListener('submit', function(event) {
+//     event.preventDefault();
+const userWelcomeElement = document.getElementById('userWelcome');
+if (userWelcomeElement) {
+    
+    const currentUser = localStorage.getItem('username');
+
+    if (currentUser) {
+        userWelcomeElement.textContent = `User: ${currentUser}`;
+    } else {
+        userWelcomeElement.textContent = 'Login to request a recipe'
+    }
+}
+
+function submitRequest() {
 
     const requesteduser = document.getElementById('requestName').value;
     const requestedRecipe = document.getElementById('recipeName').value;
@@ -23,4 +36,7 @@ document.getElementById('requestForm').addEventListener('submit', function(event
 
     document.getElementById('requestName').value = '';
     document.getElementById('recipeName').value = '';
-});
+
+    return false;
+
+};

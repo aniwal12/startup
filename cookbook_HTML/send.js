@@ -1,5 +1,7 @@
-document.getElementById('sendform').addEventListener('submit', function(event) {
-    event.preventDefault();
+// document.getElementById('sendform').addEventListener('submit', function(event) {
+//     event.preventDefault();
+
+function sendRecipe() {
 
     const receivingUser = document.getElementById('sendName');
     const sentRecipeName = document.getElementById('recipeName');
@@ -34,9 +36,12 @@ document.getElementById('sendform').addEventListener('submit', function(event) {
 
     requests = requests.filter(nextElement => nextElement.recipename !== sentRecipeName);
 
-    localStorage.setItem('requests', requests);
+    localStorage.setItem('requests', JSON.stringify(requests));
 
     document.getElementById('sendName').value = '';
     document.getElementById('recipeName').value = '';
     document.getElementById('recipeContent').value = '';
-})
+
+    return false;
+};
+//});
