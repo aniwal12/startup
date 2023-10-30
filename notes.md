@@ -38,7 +38,7 @@
 - **wget** - command line file downloader
 - **chmod** - change file permissions
 
-###DNS
+### DNS
 - Domain Name System
 - domain names are converted to IP address by doing a lookup in the DNS
 - dig is used to lookup the IP address for any domain name.
@@ -47,24 +47,24 @@
 - name server (NS) record contains the names of the authoritative name servers that authorize you to place DNS records in this DNS server
 - start of authority (SOA) record provides contact info about the owner of the domain name.
 
-###Domain names
+### Domain names
 - Broken up into a root domain with one or more subdomain prefixes. root domain is represented by a secondary level domain and a top level. TLd = edu, com, org, click, etc.
 - ex. [subdomain.]*secondary.top
 - each subdomain may have a different IP address
 - get info using whois
 
-###Caddy
+### Caddy
 - handles creation and rotation of web certificates allowing us to easily support HTTPS
 - serves up all of your static HTML, CSS, and JavaScript files.
 - acts as a gateway for subdomain requests.
 - port 443(https), 80(http), 22(ssh)
 
-###HTTPS and TLS
+### HTTPS and TLS
 - the secure version of HTTPS
 - all data is encrypted using TLS protocol
 - web certificate is required
 
- ###HTML
+ ### HTML
  - hypertext markup language
  - foundational content structure
  - one page - single page application (SPA)
@@ -108,7 +108,7 @@
 - **External Media** - media tags take a URL as an attribute. relative or full path. relative if it is in the same location as the HTML (src="")
 - to display an image with a hyperlink in HTML, use the anchor tag to create the hyperlinke and the img tag to display the image within it.
 
-###CSS
+### CSS
 - style attribute, link to sheet in the head element
 - elements inherite the rules of their parents. rules at a lower level override the rules at a higher level
 - **Box Model** - everything is defined as a box. applying stles applies them to a rectangular box. within an element's box there are internal boxes
@@ -132,7 +132,7 @@
  - **Grid** - useful when displaying a group of child elements. Start with a container element and a lot of child elements. display: grid lets it be displayed in grid flow
  - **Flex** - partition app into areas that move around based on window size/orientation. display: flex lets it be displayed in flex flow. flex-direction changes the way that it's oriented. flex: 0 80 px 0 means it won't grow and has a height of 80 pixels. fixed size box. flex:1 it gets one fractional unit of growth.
 
-###JavaScript
+### JavaScript
 - log is to output a message.
 - timers (time and timeEnd) will output the duration between time and timeEnd. wrap the code with the calls
 - count will show you how many times a block of code is called.
