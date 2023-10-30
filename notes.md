@@ -180,3 +180,39 @@
    - object (kinda like a dictionary or a map). The most common data type a JSON document contains. Strings are always delimited with double quotes. commas delimit arrays. curly braces delimit and object.
    - null
    - JSON.parse & JSON.stringify
+ - **Regular Expressions** - support built into Javascript. match, replace, search, and split accept regex. for a quick test to see if there is a match use the object's test function.
+ - **Rest** - have a function take in an unknown number of parameters. rest sytax is basically a parameter that contains the rest of the parameters. last parameter of any function, prefix it with three periods. Combines the parameters into an array.
+ - **Spread** - does the opposite of rest. takes an iterable (array or string) and expandis it into a function's parameters.
+ - **Exceptions** - try catch and throw syntax. triggered whenever your code generates an exception using the throw keyword or runtime... wrap a code block with try, follow try block with catch block. If an exception is thrown in the try block, the rest of the code is ignored and the catch block is called. finally block is always called whenever the try block is exited.
+ - **Fallbacks** - implemented using exception handling. normal feature path in try block, fallback implementation in the catch block.
+ - **Desctructuring** - process of pulling individual items out of an existing one or removing structure. done with arrays or objects. kind of looks like declaring an array with the syntax on the left side of the expression. Same with objects. specify the properties you want to pull from the source object. you can also map names to new variables. default value provided for missing ones.
+ - **Object** - collection of name value pairs referred to as properties. name has to be String or symbol, value can be any type. have common object-oriented functionality (constructors, this pointer, static properties, functions, inheritance). Can be created with the "new" operator. causes the constructor to be called. You can add properties by referencing the property name in assignment. properties can be referenced with dot or brack notation... obj.prop or obj['prop']
+ - **Object-literals** - declare a variable of object type.
+ - **Object-functions** - entries: returns an array of key value pairs. keys: returns an array of keys. values: returns an array of values.
+ - **Constructor** - any function that returns an object
+ - **This pointer** - in the context of an object, it's a pointer to the object.
+ - **Classes** - used to define objects. clarifies the intent to create a reusable component rather than a one-off object. similar to declaring an object but have an explicit constructor and assumed function declarations (?). you can make properties and functions private by putting # before them.
+ - **Inheritance** - extends keyword used to define inheritance. super function passes parameters to the parent class. the parent function can be accessed using super.
+ - **Scope** - global, module, function, block
+   - Global this - when this is referenced outside a function or object it refers to the browser's window object
+   - Function this - refers to the object that owns the function. either an object you defined or global This
+   - object this - refers to the object.
+   - array
+   - Closure is a function and its surrounding state
+   - arrow functions inherit the this pointer of their creation context.
+- **Modules** - allow for paritioning and sharing of code. Node.js modules are called CommonJS modules. JavaScript modules are called ES modules. create a file-based scope. you must export the objects from one file and import them into another. Modules can only be called from other modules, not from the global scope. in HTML  script type="module" leak it into the global scope by attaching an event handler or by adding it to the global window object.
+- **DOM** - object representation of HTML elements. global variable name is document. for everything in the HTML there is a node in the DOM (elements, attributes, text, comments) DOM is a big tree. DOM element interface: iterate child elements, access parent element, manipulate element attributes. querySelectorAll select elements from the documents. textContent contains all of the element's text. innerHTML is the textual representation of an element's HTML content. insert, modify, delete elements in the DOM. create element (.createElement()) on the document, insert the new element by appending it to an existing element (.appendChild()). Event listeners: clipboard (cut, copied, pasted), focus (an element gets focus), keyboard (keys are pressed), mouse (click events), text selection (when text is selected)
+- **Local storage** - ability to store and retrive data on a user's browser across user sessions. setItem(name, value), getItem(name), removeItem(name), clear(), string, number, or boolean. object or array convert to string with stringify(). parse it back with .parse() when retrieved.
+-  **Promises** - single threaded application, one piece of code at a time. Promise object can be pending, fulfilled, or rejected.
+-  .grid = class #title = ID
+-  getelementbyID('byu').style.color = green
+-  switch (expression) {
+    case value1:
+        // code
+        break;
+    case value2:
+        // code
+        break;
+    default:
+        // code
+}
