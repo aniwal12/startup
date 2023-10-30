@@ -143,4 +143,40 @@
 - conditionals include if, else, and if else (just like in c++) compact if else a === 1 ? console.log(1) : console.log('not 1');
 - boolean operators (&& || !)
 - loops include for, for in, for of, while, do while, and switch.
-- 
+- **Strings** - sequence of characters surrounded with single quotes, double quotes, or backticks. backtick defines a string literal that may contain JavaScript that is evaluated in place & concatenated into the string. replacement specifier is declared with a dollar sign followed by a curly brace pair. Content inside curly braces is evaluated as JavaScript.
+   - length - number of characters
+   - indexof() - starting index of a given substring
+   - split() - split the string into an array on the given delimiter
+   - startsWith() - True if the string has a given prefix
+   - endsWith() - True if the string has a given suffix
+   - toLowerCase() - Converts all characters to lowercase
+- **Functions** - first class objects meaning they can be assigned a name, passed as a parameter, returned as a result, and referenced from an object or array. Begins with the function keyword and is followed by zero or more parameters and a body with zero of more return statements.
+   - **Paramenters** - if a parameter is not provided, the value is undefined when the function executes.
+   - the function can define a default value. assign a value to the parameter in the function delaration.
+   - **Anonymous functions** - assign a function to a variable so that they can be passed as a parameter or stored as an object property.
+   - **Inner functions** - functions declared inside other functions.
+- **Arrow functions** - arrow syntax makes code more complex. no need for the function keyword. just use => after the parameter declaration. () => 3
+   - **return values** - return keyword optional if no curly braces are provided and the function contains a single expression. The result of the expressio is automatically returned. If curly braces are provided, it behaves just like a standard function.
+   - **This pointer** - inherit the this pointer from where it is created. makes a closure. allows the function to continue referencing its creation scope, even after it has passed out of that scope. Closures can remember the values of variables when the function was created instead of what they are when they are executed.
+   - **debounce** - only execute a specified function once within a given time window. window.addEventListener
+- **Arrays** - basically just a list :)
+   - push() - Add an item to the end of the array a.push(4)
+   - pop() - Remove an item from the end of the array x = a.pop()
+   - slice() - Return a sub-array a.slice(1, -1)
+   - sort() - Run a function to sort an array in place a.sort((a,b) => b-a)
+   - value() - Creates an iterator for use with a for of loop for (i of a.values()) {...}
+   - find() - Find the first item satistfied by a test function a.find(i => 1 < 2)
+   - forEach() - Run a function on each array item a.forEach(console.log)
+   - reduce() - Run a function to reduce each array item to a single item a.reduce((a,c) => a + c)
+   - map() - Run a function to map an array to a new array a.map(i => i+i)
+   - filter() - Run a function to remove items a.filter(i => i%2)
+   - every() - Run a function to test if all items match a.every(i => i < 3)
+   - some() - Run a function to test if any items match a.some(i => 1 < 1)
+- **JSON** - JavaScript Object Notation. simple and effective way to share and store data. easily convertable to and from JavaScript objects. Always encoded with UTF-8. JSON document contains one of the following data types:
+   - string
+   - number
+   - boolean
+   - array
+   - object (kinda like a dictionary or a map). The most common data type a JSON document contains. Strings are always delimited with double quotes. commas delimit arrays. curly braces delimit and object.
+   - null
+   - JSON.parse & JSON.stringify
