@@ -1,33 +1,37 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    const userWelcomeElement = document.getElementById('userWelcome');
+    if (userWelcomeElement) {
+        
+        const currentUser = localStorage.getItem('username');
+    
+        if (currentUser) {
+            userWelcomeElement.textContent = `User: ${currentUser}`;
+        } else {
+            userWelcomeElement.textContent = 'Login to request a recipe'
+        }
+    }
+
+
     function loadRecipes() {
 
-        const userWelcomeElement = document.getElementById('userWelcome');
-        if (userWelcomeElement) {
-            
-            const currentUser = localStorage.getItem('username');
-
-            if (currentUser) {
-                userWelcomeElement.textContent = `User: ${currentUser}`;
-            } else {
-                userWelcomeElement.textContent = 'Login to see your recipes'
-            }
-        }
-
-        let recipes = [];
+        const currentUser = localStorage.getItem('username');
         
         const recipesText = localStorage.getItem('recipes');
+        console.log(recipesText);
+
+        let recipes = []
 
         if (recipesText) {
             recipes = JSON.parse(recipesText);
         }
 
-        recipes = recipes.filter(nextElement => nextElement.username === currentUser)
+        const filteredrecipes = recipes.filter(nextElement => nextElement.username === currentUser)
 
         const recipesAccordion = document.getElementById('Recipes');
 
-        if (recipes.length) {
-            for (const [i, recipe] of recipes.entries()) {
+        if (filteredrecipes.length) {
+            for (const [i, recipe] of filteredrecipes.entries()) {
                 const accordionItem = document.createElement('div');
                 accordionItem.className = 'accordion-item';
 
@@ -42,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 accordionButton.setAttribute('data-bs-target', `#collapse${i + 1}`);
                 accordionButton.setAttribute('aria-expanded', 'false');
                 accordionButton.setAttribute('aria-controls', `collapse${i + 1}`);
-                accordionButton.textContent = recipe.name;
+                accordionButton.textContent = recipe.recipename;
 
                 accordionHeader.appendChild(accordionButton);
 

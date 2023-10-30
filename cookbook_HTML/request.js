@@ -14,6 +14,8 @@ if (userWelcomeElement) {
 
 function submitRequest() {
 
+    const currentUser = localStorage.getItem('username');
+
     const requesteduser = document.getElementById('requestName').value;
     const requestedRecipe = document.getElementById('recipeName').value;
 

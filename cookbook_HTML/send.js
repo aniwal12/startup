@@ -3,15 +3,15 @@
 
 function sendRecipe() {
 
-    const receivingUser = document.getElementById('sendName');
-    const sentRecipeName = document.getElementById('recipeName');
-    const sentInstructions = document.getElementById('recipeContent');
+    const receivingUser = document.getElementById('sendName').value;
+    const sentRecipeName = document.getElementById('recipeName').value;
+    const sentInstructions = document.getElementById('recipeContent').value;
 
     console.log(`Recipe for ${sentRecipeName} sent to ${receivingUser}`);
 
-    const RecipesText = localStorage.getItem('recipes');
-
     let Recipes = [];
+
+    const RecipesText = localStorage.getItem('recipes');
    
     if (RecipesText) {
 
@@ -24,9 +24,9 @@ function sendRecipe() {
         instructions: sentInstructions,
     })
 
-    localStorage.setItem('recipes', Recipes);
+    localStorage.setItem('recipes', JSON.stringify(Recipes));
 
-    const requestsText = localstorage.getItem('requests');
+    const requestsText = localStorage.getItem('requests');
 
     if (!requestsText) {
         return;
@@ -34,7 +34,7 @@ function sendRecipe() {
 
     let requests = JSON.parse(requestsText);
 
-    requests = requests.filter(nextElement => nextElement.recipename !== sentRecipeName);
+    requests = requests.filter(nextElement => nextElement.recipeName !== sentRecipeName);
 
     localStorage.setItem('requests', JSON.stringify(requests));
 

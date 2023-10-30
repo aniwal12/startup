@@ -34,33 +34,29 @@
                 <thead>
                     <th>User</th>
                     <th>Recipe</th>
-                    <th>Date</th>
                 </thead>
                 <tbody>
                     <tr>
                         <td>Caroline</td>
                         <td>Pumpkin Pancakes</td>
-                        <td>9/30/2023</td>
                     </tr>
                     <tr>
                         <td>Madie</td>
                         <td>Chicken Enchiladas</td>
-                        <td>10/1/2023</td>
                     </tr>
                     <tr>
                         <td>Tanner</td>
                         <td>Bran Muffins</td>
-                        <td>10/13/2023</td>
                     </tr>
                 </tbody>
             </table>
             <h1>Send a Recipe</h1>
-            <form id="sendform" method="post" action="">
+            <form id="sendForm" method="post" action="">
                 <label for="sendName">Send to:</label>
                 <input type="text" id="sendName" placeholder="User's name here" required>
                 <label for="recipeName">Recipe Name:</label>
                 <input type="text" id="recipeName" placeholder="Recipe name here" required>
-                <label for="recipeContent">Recipe:</label>
+                <label for="recipeContent">Instructions:</label>
                 <input type="text" id="recipeContent" placeholder="Recipe here" required>
                 <button type="button" onclick="sendRecipe()">Send Recipe</button>
             </form>

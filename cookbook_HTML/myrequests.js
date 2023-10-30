@@ -11,8 +11,10 @@ const userWelcomeElement = document.getElementById('userWelcome');
                 userWelcomeElement.textContent = 'Login to send a recipe.'
             }
         }
-        
+
 function loadRecipeRequests() {
+
+    const currentUser = localStorage.getItem('username');
 
         let recipeRequests = [];
         const requestsText = localStorage.getItem('requests');
@@ -25,7 +27,7 @@ function loadRecipeRequests() {
 
         const requestsTable = document.querySelector('#requestsTable');
 
-        if (recipeRequests.length) {
+        if (recipeRequests.length && currentUser) {
             
             const tableHeader = `
             <thead>
