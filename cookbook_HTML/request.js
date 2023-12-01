@@ -12,15 +12,33 @@ if (userWelcomeElement) {
     }
 }
 
-function submitRequest() {
+async function submitRequest() {
 
     const currentUser = localStorage.getItem('username');
 
     const requesteduser = document.getElementById('requestName').value;
     const requestedRecipe = document.getElementById('recipeName').value;
+    const newRequest = {username: requesteduser, recipeName: requestedRecipe};
 
     console.log(`Recipe request sent to ${requesteduser} for the recipe: ${requestedRecipe}`);
 
+    try {
+        const response = await fetch ('/api/requests', {
+            method: 'POST',
+            headers: {'content-type': 'application/json'},
+            body: JSON.stringify(newRequest),
+        });
+
+        const requests = await response.json();
+        localStorage.setItem('requests', JSON.stringify(scores));
+    } catch {
+
+        submitRequestLocal(newRequest);
+    }
+}
+
+
+function sumbitRequestLocal(newRequest) {
     const requestsText = localStorage.getItem('requests');
 
    let requests = [];
