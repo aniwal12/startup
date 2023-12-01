@@ -41,10 +41,21 @@ I used HTML to build the basic structure of my application.
 - **WebSocket** - The received requests and sent recipes represent the realtime communication.
 
 ## CSS Deliverable
+
 I used CSS to style my application.
+
 - **Header, footer, and main content body** - I changed the sizes of my header, footer, and main content body to better fit the appearance that I wanted my application to have. I also changed the background color and text color of my header and footer.
 - **Navigation elements** - I changed the spacing and color of my navigation elements. I also got rid of the underlines beneath the navigation elements.
 - **Responsive to window resizing** - I used flex to make sure that my application would look good on different window sizes.
 - **Application elements** - I formatted all of my buttons and my table with the placeholders for recipe requests, and I added an accordion to better organize the user's recipe collection. I picked a good color scheme and used whitespace well.
 - **Application text content** - My fonts are consistent. Text size and color changes based on where the text is found.
 - **Application images** - I formatted the image found in the header to cover the width of the entire header. I changed the size so it adds to the aesthetics of the application without drawing away too much attention from application content.
+
+## JavaScript Deliverable
+
+I used JavaScript to make the application work for a user. I also added placeholders for future features.
+
+- **Login** - Pressing the login button takes the user to their "My Recipes" page where their username is displayed at the top.
+- **Database** - User's recipes are displayed, as well as all unfulfilled recipe requests from other users. Right now this uses local storage and serves as a placeholder for database data.
+- **WebSocket** - I implimented my recipe request form and my submit request form as placeholders. In the future, Websocket will be used as a way to allow users to receive new recipes and new recipe requests in real time.
+- **Application logic** - Recipes are added to the user's recipe list in the order that they're received. Requests are also added to the requests table in the order that they're received. When a user sends a recipe that fulfills a recipe request, the recipe request is removed from their requests list.
