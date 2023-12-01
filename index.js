@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 
+const port = process.argv.length > 2 ? process.argv[2] : 4000;
 app.use(express.json());
 
 app.use(express.static('public'));
@@ -9,7 +10,7 @@ app.get('/api/recipes', (req, res, next) => {
     res.send(recipes);
 });
 
-app.get('/api/requets', (req, res, next) => {
+app.get('/api/requests', (req, res, next) => {
     res.send(requests);
 });
 
@@ -23,7 +24,9 @@ app.post('/api/requests', (req, res) => {
     res.send(requests);
 })
 
-app.listen(4000);
+app.listen(port, () => {
+    console.log(`Listening on port ${port}`);
+});
 
 let recipes = [];
 function updateRecipes(newRecipe, recipes) {
