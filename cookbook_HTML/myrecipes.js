@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    function loadRecipes() {
+    async function loadRecipes() {
 
         const currentUser = localStorage.getItem('username');
         
@@ -21,9 +21,16 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(recipesText);
 
         let recipes = []
+        try {
+            const response = await fetch('/api/recipes');
+            recipes = await response.json();
 
-        if (recipesText) {
-            recipes = JSON.parse(recipesText);
+            localStorage.setItem('recipes', JSON.stringify(recipes));
+        } catch {
+            const recipeText = localstorage.getItem('recipes');
+            if (recipesText) {
+                recipes = JSON.parse(recipesText);
+            }
         }
 
         const filteredrecipes = recipes.filter(nextElement => nextElement.username === currentUser)

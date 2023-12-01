@@ -1,0 +1,14 @@
+{
+  "name": "startup",
+  "version": "1.0.0",
+  "description": "Last week I called my mom to ask for her pumpkin bread recipe... AGAIN. This happens around this time every year, but it doesn't need to. With Cookbook, users can easily share recipes with other users and request recipes from other users. Now, I don't need to call my mom every fall to get the same pumpkin bread recipe. Instead, I can surprise her with a freshly made loaf.\r ### Design\r ![User login page for the Cookbook application.](Cookbook_login.jpg)",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.40.1",
+    "@types/node": "^20.10.1"
+  }
+}
