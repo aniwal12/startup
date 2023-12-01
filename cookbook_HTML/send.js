@@ -1,13 +1,32 @@
 // document.getElementById('sendform').addEventListener('submit', function(event) {
 //     event.preventDefault();
 
-function sendRecipe() {
+async function sendRecipe() {
 
     const receivingUser = document.getElementById('sendName').value;
     const sentRecipeName = document.getElementById('recipeName').value;
     const sentInstructions = document.getElementById('recipeContent').value;
+    const newRecipe = {username: receivingUser, recipename: sentRecipeName, instructions: sentInstructions};
 
     console.log(`Recipe for ${sentRecipeName} sent to ${receivingUser}`);
+
+    try {
+        const response = await fetch ('/api/recipes', {
+            method: 'POST',
+            headers: {'content-type': 'application/json'},
+            body: JSON.stringify(newRecipe)
+        });
+
+        const recipes = await response.json();
+        localStorage.setItem('recipes', JSON.stringify(recipes));
+    } catch {
+
+        sendRecipeLocal(newRecipe);
+    }
+
+    }
+
+function sendRecipeLocal(newRecipe) {
 
     let Recipes = [];
 
