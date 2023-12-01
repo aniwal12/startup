@@ -12,15 +12,22 @@ const userWelcomeElement = document.getElementById('userWelcome');
             }
         }
 
-function loadRecipeRequests() {
+async function loadRecipeRequests() {
 
     const currentUser = localStorage.getItem('username');
 
         let recipeRequests = [];
-        const requestsText = localStorage.getItem('requests');
+        try {
+            const response = await fetch('/api/recipeRequests');
+            recipeRequests = await response.json();
 
-        if (requestsText) {
-            recipeRequests = JSON.parse(requestsText);
+            localStorage.setItem('requests', JSON.stringify(recipeRequests));
+        } catch {
+            const requestsText = localStorage.getItem('requests');
+            
+            if (requestsText) {
+                recipeRequests = JSON.parse(requestsText);
+            }
         }
 
         recipeRequests = recipeRequests.filter(nextElement => nextElement.username === currentUser);
