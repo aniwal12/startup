@@ -3,3 +3,24 @@ function login() {
     localStorage.setItem("username", nameEl.value);
     window.location.href = "recipes.html";
 }
+
+function displayRecipe(data) {
+    fetch('https://www.themealdb.com/api/json/v1/1/random.php')
+      .then((response) => response.json())
+      .then((data) => {
+        const containerEl = document.querySelector('#recipe');
+  
+        const recipeEl = document.createElement('p');
+        recipeEl.classList.add('recipe');
+        const instructionsEl = document.createElement('p');
+        instructionsEl.classList.add('instructions');
+  
+        recipeEl.textContent = data.content;
+        instructionsEl.textContent = data.author;
+  
+        containerEl.appendChild(recipeEl);
+        containerEl.appendChild(instructionsEl);
+      });
+  }
+
+  displayRecipe();
