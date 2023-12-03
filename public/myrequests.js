@@ -18,7 +18,7 @@ async function loadRecipeRequests() {
 
         let recipeRequests = [];
         try {
-            const response = await fetch('/api/recipeRequests');
+            const response = await fetch('/api/requests');
             recipeRequests = await response.json();
 
             localStorage.setItem('requests', JSON.stringify(recipeRequests));
@@ -51,7 +51,7 @@ async function loadRecipeRequests() {
                 const usernameColumn = document.createElement('td');
                 const recipeNameColumn = document.createElement('td');
 
-                usernameColumn.textContent = request.username;
+                usernameColumn.textContent = request.requestingUser;
                 recipeNameColumn.textContent = request.recipeName;
 
                 row.appendChild(usernameColumn);

@@ -18,7 +18,7 @@ async function submitRequest() {
 
     const requesteduser = document.getElementById('requestName').value;
     const requestedRecipe = document.getElementById('recipeName').value;
-    const newRequest = {username: requesteduser, recipeName: requestedRecipe};
+    const newRequest = {username: requesteduser, requestingUser: currentUser, recipeName: requestedRecipe};
 
     console.log(`Recipe request sent to ${requesteduser} for the recipe: ${requestedRecipe}`);
 
@@ -49,6 +49,7 @@ function sumbitRequestLocal(newRequest) {
 
     requests.push({
         username: requesteduser,
+        requestingUser: currentUser,
         recipeName: requestedRecipe,
     })
 
