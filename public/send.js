@@ -24,6 +24,8 @@ async function sendRecipe() {
         sendRecipeLocal(newRecipe);
     }
 
+    document.getElementById('sendForm').reset();
+
     }
 
 function sendRecipeLocal(newRecipe) {

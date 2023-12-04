@@ -20,6 +20,7 @@ async function loadRecipeRequests() {
         try {
             const response = await fetch('/api/requests');
             recipeRequests = await response.json();
+            console.log(recipeRequests);
 
             localStorage.setItem('requests', JSON.stringify(recipeRequests));
         } catch {

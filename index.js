@@ -32,7 +32,7 @@ let recipes = [];
 function updateRecipes(newRecipe, recipes) {
     recipes.push(newRecipe);
 
-    removeRequests(newRecipe, requests)
+    requests = removeRequests(newRecipe, requests);
 
     return recipes;
 }
@@ -45,7 +45,9 @@ function addRequest(newRequest, requests) {
 }
 
 function removeRequests(newRecipe, requests) {
-    requests = requests.filter(request => request.recipeName != newRecipe.recipename)
+    console.log(newRecipe);
+    console.log(requests);
+    requests = requests.filter(request => request.recipeName != newRecipe.recipename);
 
     return requests;
 }
