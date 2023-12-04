@@ -90,6 +90,23 @@ main button {
     cursor: pointer;
 }
 
+#randomrecipe {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 10px;
+    align-items: center;
+}
+
+#recipe h3 {
+    text-align: center;
+}
+
+#video p {
+    align-items: center;
+    text-align: center;
+    color: gray;
+}
+
 .accordion-button {
     background-color: #76b5c5;
     color: #eeeee4;

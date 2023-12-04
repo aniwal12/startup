@@ -11,16 +11,16 @@ function displayRecipe(data) {
         console.log(data);
         const containerEl = document.querySelector('#recipe');
   
-        const recipeEl = document.createElement('p');
+        const recipeEl = document.createElement('h3');
         recipeEl.classList.add('recipe');
-        const instructionsEl = document.createElement('p');
-        instructionsEl.classList.add('instructions');
+        
+        const videoEl = document.getElementById('video');
   
         recipeEl.textContent = data.meals[0].strMeal;
-        instructionsEl.textContent = data.meals[0].strInstructions;
+
+        videoEl.href = data.meals[0].strYoutube;
   
         containerEl.appendChild(recipeEl);
-        containerEl.appendChild(instructionsEl);
       });
   }
 
