@@ -15,7 +15,6 @@ if (userWelcomeElement) {
 async function submitRequest() {
 
     const currentUser = localStorage.getItem('username');
-
     const requesteduser = document.getElementById('requestName').value;
     const requestedRecipe = document.getElementById('recipeName').value;
     const newRequest = {username: requesteduser, requestingUser: currentUser, recipeName: requestedRecipe};
@@ -38,7 +37,7 @@ async function submitRequest() {
 }
 
 
-function sumbitRequestLocal(newRequest) {
+function submitRequestLocal(newRequest) {
     const requestsText = localStorage.getItem('requests');
 
    let requests = [];
@@ -47,11 +46,7 @@ function sumbitRequestLocal(newRequest) {
     requests = JSON.parse(requestsText);
    }
 
-    requests.push({
-        username: requesteduser,
-        requestingUser: currentUser,
-        recipeName: requestedRecipe,
-    })
+    requests.push(newRequest);
 
     localStorage.setItem('requests', JSON.stringify(requests));
 

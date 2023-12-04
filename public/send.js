@@ -34,14 +34,10 @@ function sendRecipeLocal(newRecipe) {
    
     if (RecipesText) {
 
-        Recipes = JSON.parse(RecipesText);
+        Recipes = JSON.parse(RecipesText); 
     }
 
-    Recipes.push({
-        username: receivingUser,
-        recipename: sentRecipeName,
-        instructions: sentInstructions,
-    })
+    Recipes.push(newRecipe);
 
     localStorage.setItem('recipes', JSON.stringify(Recipes));
 
