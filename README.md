@@ -59,3 +59,12 @@ I used JavaScript to make the application work for a user. I also added placehol
 - **Database** - User's recipes are displayed, as well as all unfulfilled recipe requests from other users. Right now this uses local storage and serves as a placeholder for database data.
 - **WebSocket** - I implimented my recipe request form and my submit request form as placeholders. In the future, Websocket will be used as a way to allow users to receive new recipes and new recipe requests in real time.
 - **Application logic** - Recipes are added to the user's recipe list in the order that they're received. Requests are also added to the requests table in the order that they're received. When a user sends a recipe that fulfills a recipe request, the recipe request is removed from their requests list.
+
+## Service Deliverable
+
+For this deliverable I added backend web service support and interaction.
+- **Create an HTTP service using Node.js and Express** - done.
+- **Static Middleware** - done.
+- **Third Party Endpoints** - I added a spot on the login page for a random recipe that users see when they go to login.
+- **Backend Service Endpoints** - I have placeholders for login information. I have endpoints that receive requests and recipes and return requests and recipes.
+- **Frontend Calls Service Endpoints** - This is done using the fetch function.
