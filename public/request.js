@@ -22,7 +22,7 @@ async function submitRequest() {
     console.log(`Recipe request sent to ${requesteduser} for the recipe: ${requestedRecipe}`);
 
     try {
-        const response = await fetch ('/api/requests', {
+        const response = await fetch (`/api/requests`, {
             method: 'POST',
             headers: {'content-type': 'application/json'},
             body: JSON.stringify(newRequest),

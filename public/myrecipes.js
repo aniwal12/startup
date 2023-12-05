@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let recipes = []
         try {
-            const response = await fetch('/api/recipes');
+            const response = await fetch(`/api/recipes?username=${currentUser}`);
             recipes = await response.json();
 
             localStorage.setItem('recipes', JSON.stringify(recipes));

@@ -15,18 +15,21 @@ async function loadRecipes(currentUser) {
 
 async function loadRequests(currentUser) {
     const query = { username : currentUser}
-    
+    console.log(query);
     const cursor = requestCollection.find(query);
     return cursor.toArray();
 }
 
-async function addRecipe(currentUser, recipe) {
+async function addRecipe(recipe) {
     const result = await recipeCollection.insertOne(recipe);
-    requestCollection.deleteMany({recipename: recipe.recipeName})
+    requestCollection.deleteMany({recipename: recipe.recipeName,
+    requestingUser: recipe.username})
     return result;
 }
 
-async function addRequest(currentUser, request) {
+async function addRequest(request) {
     const result = await requestCollection.insertOne(request);
     return result;
 }
+
+module.exports = { loadRecipes, loadRequests, addRecipe, addRequest };

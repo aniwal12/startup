@@ -18,9 +18,8 @@ async function loadRecipeRequests() {
 
         let recipeRequests = [];
         try {
-            const response = await fetch('/api/requests');
+            const response = await fetch(`/api/requests?username=${currentUser}`);
             recipeRequests = await response.json();
-            console.log(recipeRequests);
 
             localStorage.setItem('requests', JSON.stringify(recipeRequests));
         } catch {
