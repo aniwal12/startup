@@ -19,3 +19,14 @@ async function loadRequests(currentUser) {
     const cursor = requestCollection.find(query);
     return cursor.toArray();
 }
+
+async function addRecipe(currentUser, recipe) {
+    const result = await recipeCollection.insertOne(recipe);
+    requestCollection.deleteMany({recipename: recipe.recipeName})
+    return result;
+}
+
+async function addRequest(currentUser, request) {
+    const result = await requestCollection.insertOne(request);
+    return result;
+}
