@@ -1,11 +1,35 @@
+const cookieParser = require('cookie-parser');
+const bcrypt = require('bcrypt');
 const express = require('express');
 const db = require('./database.js');
 const app = express();
 
+const authCookieName = 'token';
+
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 app.use(express.json());
 
+app.use(cookieParser());
+
 app.use(express.static('public'));
+
+app.set('trust proxy', true);
+
+app.post('/api/auth/creat', async (req, res) => {
+    if (await db.getUser(req.body.email)) {
+        req.status(409).send({ msg: 'Existing user' });
+    } else {
+        const user = await db.createUser(req.body.email, req.body.password);
+
+        setAuthCookie(res, user.token);
+
+        res.send({
+            id: user._id,
+        });
+    }
+});
+
+app.post('api/auth/login', async )
 
 app.get('/api/recipes', async (req, res, next) => {
     let username = req.query.username;
