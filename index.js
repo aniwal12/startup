@@ -29,7 +29,17 @@ app.post('/api/auth/creat', async (req, res) => {
     }
 });
 
-app.post('api/auth/login', async )
+app.post('api/auth/login', async (req, res) => {
+    const user = await db.getUser(req.body.email);
+    if (user) {
+        if (await bcrypt.compare(req.body.password, user.password)) {
+            setAuthCookie(res, user.token);
+            res.send({ id: user._id });
+            return;
+        }
+    }
+    res.status(401).send({ msg: 'Unathorized'});
+});
 
 app.get('/api/recipes', async (req, res, next) => {
     let username = req.query.username;
