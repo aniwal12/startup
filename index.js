@@ -41,6 +41,11 @@ app.post('api/auth/login', async (req, res) => {
     res.status(401).send({ msg: 'Unathorized'});
 });
 
+app.delete('/api/auth/logout', (_req, res) => {
+    res.clearCookie(authCookieName);
+    res.status(204).end();
+});
+
 app.get('/api/recipes', async (req, res, next) => {
     let username = req.query.username;
     let recipes = await db.loadRecipes(username);
