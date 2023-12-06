@@ -46,6 +46,16 @@ app.delete('/api/auth/logout', (_req, res) => {
     res.status(204).end();
 });
 
+app.get('api/user/:email', async (req, res) => {
+    const user = await db.getUser(req.params.email);
+    if (user) {
+        const token = req?.cookies.token;
+        res.send({ email: user.email, authenticated: token === user.token });
+        return;
+    }
+    res.status(404).send({ msg: 'Unknown' });
+});
+
 app.get('/api/recipes', async (req, res, next) => {
     let username = req.query.username;
     let recipes = await db.loadRecipes(username);
