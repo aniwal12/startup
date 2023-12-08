@@ -1,7 +1,39 @@
-function login() {
-    const nameEl = document.querySelector("#name");
-    localStorage.setItem("username", nameEl.value);
-    window.location.href = "recipes.html";
+async function loginUser() {
+  loginOrCreate(`/api/auth/login`);
+}
+
+async function createUser() {
+  loginOrCreate(`/api/auth/create`);
+}
+
+async function loginOrCreate(endpoint) {
+  const username = document.querySelector('#userName')?.value;
+  const password = document.querySelector('#userPassword')?.value;
+  const response = await fetch(endpoint, {
+    method: 'post',
+    body: JSON.stringify({username: username, password: password }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  });
+
+  if (response.ok) {
+    localStorage.setItem('userName', userName);
+    window.location.href = 'recipes.html';
+  } else {
+    const body = await response.json();
+    const modalEl = document.querySelector('#msgModal');
+    modalEl.querySelector('.modal-body').testContent = `Error: ${body.msg}`;
+    const msgModal = new bootstrap.Modal(modalEl, {});
+    msgModal.show();
+  }
+}
+
+function logout() {
+  localStorage.removeItem('userName');
+  fetch(`/api/auth/logout`, {
+    method: 'delete',
+  }).then(() => (window.location.href = '/'));
 }
 
 function displayRecipe(data) {
