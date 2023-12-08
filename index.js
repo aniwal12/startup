@@ -17,7 +17,7 @@ app.set('trust proxy', true);
 
 app.post('/api/auth/create', async (req, res) => {
     if (await db.getUser(req.body.username)) {
-        req.status(409).send({ msg: 'Existing user' });
+        res.status(409).send({ msg: 'Existing user' });
     } else {
         const user = await db.createUser(req.body.username, req.body.password);
 
