@@ -22,6 +22,7 @@
                     <li><a href="recipes.html">My Recipes</a></li>
                     <li><a href="requests.html">Request a Recipe</a></li>
                     <li><a href="send.html">Send a Recipe</a></li>
+                    <div id="logout"><button onclick="logout()">logout</button></div>
                 </menu>
             </nav>
 
@@ -29,7 +30,7 @@
 
             <main>
               <div id="userWelcome" class="username-display"></div>
-                <h1>My Recipes</h1>
+                <div id="myrecipes"><h1>My Recipes</h1></div>
 
                 <div class="accordion" id="Recipes">
                   <!-- <div class="accordion-item">
@@ -56,6 +57,7 @@
                     
             </main>
             <script src="myrecipes.js"></script>
+            <script src="logout.js"></script>
 
         <script 
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

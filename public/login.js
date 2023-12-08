@@ -18,7 +18,7 @@ async function loginOrCreate(endpoint) {
   });
 
   if (response.ok) {
-    localStorage.setItem('userName', userName);
+    localStorage.setItem('username', username);
     window.location.href = 'recipes.html';
   } else {
     const body = await response.json();
@@ -30,7 +30,7 @@ async function loginOrCreate(endpoint) {
 }
 
 function logout() {
-  localStorage.removeItem('userName');
+  localStorage.removeItem('username');
   fetch(`/api/auth/logout`, {
     method: 'delete',
   }).then(() => (window.location.href = '/'));

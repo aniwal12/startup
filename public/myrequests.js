@@ -1,4 +1,11 @@
 //document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
+    let username = localStorage.getItem("username");
+    if (!username) {
+        document.getElementById("requests").style.display="none"
+    }
+});
+    
 
 const userWelcomeElement = document.getElementById('userWelcome');
         if (userWelcomeElement) {

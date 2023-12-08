@@ -1,4 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
+    let username = localStorage.getItem("username");
+    if (!username) {
+        document.getElementById("myrecipes").style.display="none"
+        document.getElementById("logout").style.display="none"
+    }
 
     const userWelcomeElement = document.getElementById('userWelcome');
     if (userWelcomeElement) {

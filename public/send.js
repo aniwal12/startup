@@ -1,5 +1,12 @@
 // document.getElementById('sendform').addEventListener('submit', function(event) {
 //     event.preventDefault();
+document.addEventListener("DOMContentLoaded", function () {
+    let username = localStorage.getItem("username");
+    if (!username) {
+        document.getElementById("send").style.display="none"
+        document.getElementById("logout").style.display="none"
+    }
+});
 
 async function sendRecipe() {
 

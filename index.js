@@ -68,8 +68,8 @@ secureApiRouter.get('/api/recipes', async (req, res, next) => {
 });
 
 secureApiRouter.get('/api/requests', async (req, res, next) => {
-    let username = req.query.username;
-    console.log(req.query);
+    let username = req.user.username;
+    console.log(req.user);
     let requests = await db.loadRequests(username);
     res.send(requests);
 });
