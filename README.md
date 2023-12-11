@@ -81,7 +81,7 @@ For this deliverable I stored requests and recipes in the database.
 ## Login Deliverable
 
 For this deliverable I added login information and associated recipes and requests with the user.
-- **User Registration** - Creates new account with associated username and password in the databse.
+- **User Registration** - Creates new account with associated username and password in the database.
 - **Existing User Authentication** - If the user already exists, their preexisting recipes and requests load.
 - **MongoDB** - used to store the account information, as well as recipes and requests.
 - **Restricts Functionality** - Users cannot look at their recipes and requests or send recipes and requests until they're logged in.
