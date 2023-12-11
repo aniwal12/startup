@@ -90,6 +90,12 @@ main button {
     cursor: pointer;
 }
 
+menu button {
+    background-color:#76b5c5;
+    color: #eeeee4;
+    border: none;
+}
+
 #randomrecipe {
     margin-top: 20px;
     margin-bottom: 10px;

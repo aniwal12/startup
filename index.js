@@ -29,7 +29,7 @@ app.post('/api/auth/create', async (req, res) => {
     }
 });
 
-app.post('api/auth/login', async (req, res) => {
+app.post('/api/auth/login', async (req, res) => {
     const user = await db.getUser(req.body.username);
     if (user) {
         if (await bcrypt.compare(req.body.password, user.password)) {
