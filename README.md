@@ -72,8 +72,16 @@ For this deliverable I added backend web service support and interaction.
 
 ## DB Deliverable
 
-For this deliverable, I stored requests and recipes in the database.
+For this deliverable I stored requests and recipes in the database.
 
 - **MongoDB Atlas database created** - done.
 - **Backend Endpoints provided** - Endpoints send data to Mongo after processing.
 - **Stores application data in MongoDB** - done.
+
+## Login Deliverable
+
+For this deliverable I added login information and associated recipes and requests with the user.
+- **User Registration** - Creates new account with associated username and password in the databse.
+- **Existing User Authentication** - If the user already exists, their preexisting recipes and requests load.
+- **MongoDB** - used to store the account information, as well as recipes and requests.
+- **Restricts Functionality** - Users cannot look at their recipes and requests or send recipes and requests until they're logged in.
