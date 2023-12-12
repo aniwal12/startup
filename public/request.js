@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("request").style.display="none"
         document.getElementById("logout").style.display="none"
     }
+    configureWebSocket();
 });
 const userWelcomeElement = document.getElementById('userWelcome');
 if (userWelcomeElement) {
@@ -19,12 +20,12 @@ if (userWelcomeElement) {
     }
 }
 
-configureWebSocket() {
+function configureWebSocket() {
     const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
     this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
 }
 
-broadcastEvent(from, type, value) {
+function broadcastEvent(from, type, value) {
     const event = {
         from: from,
         type: type,
@@ -43,13 +44,9 @@ async function submitRequest() {
 
     console.log(`Recipe request sent to ${requesteduser} for the recipe: ${requestedRecipe}`);
 
-    try {
-        broadcastEvent(currentUser, "request")
-        localStorage.setItem('requests', JSON.stringify(scores));
-    } catch {
+    broadcastEvent(currentUser, "request", newRequest);
 
-        submitRequestLocal(newRequest);
-    }
+        //submitRequestLocal(newRequest);
 }
 
 

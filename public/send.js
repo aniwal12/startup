@@ -6,7 +6,28 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("send").style.display="none"
         document.getElementById("logout").style.display="none"
     }
+    configureWebSocket();
 });
+
+function configureWebSocket() {
+    const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+    this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+    this.socket.onmessage = async (event) => {
+        const msg = JSON.parse(await event.data.text());
+        if (msg.type === "requestsUpdate") {
+            localStorage.setItem('requests', JSON.stringify(scores));
+        }
+    }
+}
+
+function broadcastEvent(from, type, value) {
+    const event = {
+        from: from,
+        type: type,
+        value: value,
+    };
+    this.socket.send(JSON.stringify(event));
+}
 
 async function sendRecipe() {
 
@@ -34,6 +55,7 @@ async function sendRecipe() {
     document.getElementById('sendForm').reset();
 
     }
+
 
 function sendRecipeLocal(newRecipe) {
 
