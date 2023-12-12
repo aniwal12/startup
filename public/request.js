@@ -23,6 +23,9 @@ if (userWelcomeElement) {
 function configureWebSocket() {
     const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
     this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+    this.socket.onopen = function (){
+        console.log('connected');
+    }
 }
 
 function broadcastEvent(from, type, value) {

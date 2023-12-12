@@ -13,7 +13,7 @@ function configureWebSocket() {
     const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
     this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
     this.socket.onmessage = async (event) => {
-        const msg = JSON.parse(await event.data.text());
+        const msg = JSON.parse(event.data);
         if (msg.type === "requestsUpdate") {
             localStorage.setItem('requests', JSON.stringify(scores));
         }

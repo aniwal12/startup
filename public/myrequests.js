@@ -1,10 +1,46 @@
+
 //document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
     let username = localStorage.getItem("username");
     if (!username) {
         document.getElementById("requests").style.display="none"
     }
+    console.log("help");
+    configureWebSocketrequest();
 });
+
+let requestSocket
+
+function configureWebSocketrequest() {
+    console.log("configure");
+    const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+    requestSocket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+    requestSocket.onopen = function (){
+        console.log('connected');
+        const currentUser = localStorage.getItem('username');
+        broadcastRequest(currentUser, "connected" );
+    }
+    requestSocket.onclose = () => console.log("request socket closed")
+    requestSocket.onmessage = async (event) => {
+        console.log("message received")
+        const msg = JSON.parse(event.data);
+        console.log(msg);
+        if (msg.type === "requestsUpdate") {
+            localStorage.setItem('requests', JSON.stringify(msg.value));
+            const currentUser = localStorage.getItem('username');
+            buildTable(currentUser);
+        }
+    }
+}
+
+function broadcastRequest(from, type, value) {
+    const event = {
+        from: from,
+        type: type,
+        value: value,
+    };
+    requestSocket.send(JSON.stringify(event));
+}
     
 
 const userWelcomeElement = document.getElementById('userWelcome');
@@ -19,29 +55,14 @@ const userWelcomeElement = document.getElementById('userWelcome');
             }
         }
 
-async function loadRecipeRequests() {
+function buildTable(currentUser){
 
-    const currentUser = localStorage.getItem('username');
+    const recipeRequests = JSON.parse(localStorage.getItem('requests'));
+    const currentUserRecipeRequests = recipeRequests.filter(nextElement => nextElement.username === currentUser);
+    
+    const requestsTable = document.querySelector('#requestsTable');
 
-        let recipeRequests = [];
-        try {
-            const response = await fetch(`/api/requests?username=${currentUser}`);
-            recipeRequests = await response.json();
-
-            localStorage.setItem('requests', JSON.stringify(recipeRequests));
-        } catch {
-            const requestsText = localStorage.getItem('requests');
-            
-            if (requestsText) {
-                recipeRequests = JSON.parse(requestsText);
-            }
-        }
-
-        recipeRequests = recipeRequests.filter(nextElement => nextElement.username === currentUser);
-
-        const requestsTable = document.querySelector('#requestsTable');
-
-        if (recipeRequests.length && currentUser) {
+        if (currentUserRecipeRequests.length && currentUser) {
             
             const tableHeader = `
             <thead>
@@ -71,6 +92,26 @@ async function loadRecipeRequests() {
                 requestsTable.innerHTML = '<p class="centered">No recipe requests</p>';
             }
         }
+
+async function loadRecipeRequests() {
+
+    const currentUser = localStorage.getItem('username');
+
+        let recipeRequests = [];
+        try {
+            const response = await fetch(`/api/requests?username=${currentUser}`);
+            recipeRequests = await response.json();
+
+            localStorage.setItem('requests', JSON.stringify(recipeRequests));
+        } catch {
+            const requestsText = localStorage.getItem('requests');
+            
+            if (requestsText) {
+                recipeRequests = JSON.parse(requestsText);
+            }
+        }
+        buildTable(currentUser);
+    }
 
         loadRecipeRequests();
 //});

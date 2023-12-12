@@ -20,10 +20,17 @@ function peerProxy(httpServer) {
         ws.on('message', async function message(data) {
             const message = JSON.parse(data);
             console.log(message);
+            if (message.type === "connected") {
+                connection.username = message.from;
+            }
             if (message.type === "request") {
-                let requests = await db.addRequest(message.value);
-                for (let connection of connections) {
-                    connection.ws.emit(requests);}
+                await db.addRequest(message.value);
+                let requests = await db.loadRequests(message.value.username);
+                const event = {from: message.from, type: 'requestsUpdate', value: requests}
+                console.log(event);
+                let connection = connections.find(con => con.username === message.value.username)
+                    
+                if (connection) {connection.ws.send(JSON.stringify(event));}
             } 
         })
 
