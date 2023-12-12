@@ -19,6 +19,21 @@ if (userWelcomeElement) {
     }
 }
 
+configureWebSocket() {
+    const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+    this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+}
+
+broadcastEvent(from, type, value) {
+    const event = {
+        from: from,
+        type: type,
+        value: value,
+    };
+    this.socket.send(JSON.stringify(event));
+}
+
+
 async function submitRequest() {
 
     const currentUser = localStorage.getItem('username');
@@ -29,13 +44,7 @@ async function submitRequest() {
     console.log(`Recipe request sent to ${requesteduser} for the recipe: ${requestedRecipe}`);
 
     try {
-        const response = await fetch (`/api/requests`, {
-            method: 'POST',
-            headers: {'content-type': 'application/json'},
-            body: JSON.stringify(newRequest),
-        });
-
-        const requests = await response.json();
+        broadcastEvent(currentUser, "request")
         localStorage.setItem('requests', JSON.stringify(scores));
     } catch {
 
