@@ -9,10 +9,12 @@ document.addEventListener("DOMContentLoaded", function () {
     configureWebSocket();
 });
 
+let sendSocket
+
 function configureWebSocket() {
     const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
-    this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
-    this.socket.onmessage = async (event) => {
+    sendSocket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+    sendSocket.onmessage = async (event) => {
         const msg = JSON.parse(event.data);
         if (msg.type === "requestsUpdate") {
             localStorage.setItem('requests', JSON.stringify(scores));
@@ -26,7 +28,7 @@ function broadcastEvent(from, type, value) {
         type: type,
         value: value,
     };
-    this.socket.send(JSON.stringify(event));
+    sendSocket.send(JSON.stringify(event));
 }
 
 async function sendRecipe() {
