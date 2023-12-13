@@ -85,3 +85,11 @@ For this deliverable I added login information and associated recipes and reques
 - **Existing User Authentication** - If the user already exists, their preexisting recipes and requests load.
 - **MongoDB** - used to store the account information, as well as recipes and requests.
 - **Restricts Functionality** - Users cannot look at their recipes and requests or send recipes and requests until they're logged in.
+
+## WebSocket Deliverable
+
+For this deliverable I used webSocket to update user's recipe requests in realtime.
+- **Backend listens for WebScoket connection** - done.
+- **Frontend makes WebSocket connection** - done.
+- **Data sent over WebSocket connection** - this is done for all recipe requests.
+- **WebSocket data displayed** - User's recipe requests list is update as requests are sent from other users.
