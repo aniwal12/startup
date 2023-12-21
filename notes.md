@@ -215,4 +215,398 @@
         break;
     default:
         // code
+
 }
+
+## Final
+
+### Web Services Introduction
+- **Frontend Overview**
+- Application intinially loaded from the web server and runs on the user's browser.
+- Frontend comprises HTML, CSS, JavaScript, and image files.
+- All requests between devices, including fetching application files, use HTTPS.
+- **Frontend Fetch**
+- Frontend JavaScript can make requests to external services worldwide
+- To make a web service request, use the fetch function and provide the service's URL.
+- Enables obtaining external data and injecting it into the DOM for user interaction.
+- **Backend Functionality**
+- Next setp in full-stack development involves creating your web service (backend).
+- Web service provides static frontend files and handles fetch requests for various tasks such as storing data persistently, providing security, running tasks, executing application logic (hidden from users), and communication with other users.
+- Web service functions are often called endpoints or APIs.
+- **Backend Interaction**
+- backend web service can use fetch to make requests to other web services.
+- Example: frontend fetches user data from backend, which in turn fetches data from a database and another service for subway routes.
+- backend combines fetched data and returns it to the frontend for display.
+- **Key Concepts**
+- frontend fetches external data using https
+- backend serves as the application's backend, handling various tasks and interacting with databases and external services.
+- fetch function is crucial for communication between frontend and backend.
+- endpoints/apis are the functions provided by a web service
+- full stack application involves both frontedn and backend development.
+
+### URL
+- **Definition**
+- URL stands for uniform resource locator
+- represents the location of a web resouce, which can be diverse, including web pages, fonts, images, videos, database records, or JSON objects.
+- Examples of ephemeral resources: visitation counter, gaming session.
+- **URL Structure**
+- syntax: <scheme>://<domain name>:<port>/<path>?<parameters>#<anchor>
+- **URL components**
+- scheme: example - https. represents the protocol required to request the resource
+- domain name: example - byu.edu. the domain that owns the resource.
+- port: example - 443. specifices the network port used to connect to the domain. default: 80 for http, 443 for https
+- path: example - /cs/260/student. represents the path to the resource on the domain. doesn't necessarily correspond to the file system. it can beb logical (endpoint parameters, database table, object schema).
+- parameters: example - filter=accepted. key-value pairs representing additional qualifiers on the resource. also called the query string.
+- anchor: example - summary. represents a sub-location in the resource. for html pages, prompts the browser to scroll to the element with a matching ID. Also called hash or fragment ID.
+- **Additional URL Considerations**
+- Historical convention: usernames and passwords could precede the domain for authentication but are now deprecated for security reasons.
+- URN (uniform resource name): unique resource name without location information.
+- URI (uniform resource identifier): general resource identifier referring to either a URL or URN.
+- In web programming, focus is typically on URLs
+- **Key Concepts**
+- understanding URL structure: scheme, domain name, port, path, parameters, anchor.
+- usage of usernames/passwords in URLs (deprecated for security).
+- distinction between URN and URI in the context of web resources.
+
+### Ports
+-**Importance of Ports**
+- Connection to a device on the internet requires both an IP address and a numbered port.
+- Ports enable a single device to support multiple protocols and various services
+- ports may be externally exposed or used internally on the device.
+- **IANA and Port Usage**
+- Internet assigned numbers authority (IANA) defines standard usage for port numbers.
+- port ranges:
+- 0-1023: standard protocols.
+- 1024 10 49151: assigned to requesting entities.
+- 49152 to 65535: dynamic, used for creating dynamic connections to a device.
+- **Common Port Numbers**
+- 20: FTP (file transfer protocol) for data transfer
+- 22: SSH (secure shell) for connecting remote devices
+- 80: HTTP (hypertext transfer protocol) for web requests.
+- 443: HTTPS (HTTP secure) for secure web requests.
+- 25: SMTP
+- 53: DNS
+- 110: POP3
+- 123 NTP
+- 161 SNMP
+- 194 IRC
+- **Web Server Example**
+- your web server exposes ports externally for different purposes: port 22, 443, 80... see above
+- **Caddy**
+- listens on ports 80 and 443
+- requests on 80 are automatically redirected to port 443 for a secure connection
+- handling requests on 443. reads static files if the path matches. connects to gateway services on specified ports (eg 3000 or 4000) based on path definitions.
+- **Managing Ports Internally**
+- internally on a web server, multiple web services can run, each using a different port
+- consistency is crucial, ensure each service uses a unique port.
+
+### HTTP
+-**Intro**
+- HTTP is the language of the web, faciliating communication between web clients (browsers) and servers
+- understanding HTTP internals enhances effective communication on the web
+- **HTTP Exchange**
+- interaction involves HTTP requests and responses
+- user browser debugger or tools like curl to visualize the exchange
+- **HTTP Request syntax**
+- general syntax: <verb><url path, parameters, anchor><version>
+- headers: <header key: value>*
+- body (optional)
+- example request:
+- GET /hypertext/WWW/Helping.html HTTP/1.1
+- Host: info.cern.ch
+- Accept: text/html
+- **HTTP Response Syntax**
+- General syntax: <version> <status code> <status string>
+- headers: <header key: value>
+- body (optional)
+- example response:
+- HTTP/1.1 200 OK
+- Date: Tue, 06 Dec 2022 21:54:42 GMT
+- Server: Apache
+- ...
+- Content-Type: text/html
+- **Common HTTP Verbs**
+- GET: get requested resource
+- POST: create a new resource; includes the resource in the request body
+- PUT: update a resource; requires a unique ID
+- DELETE: delete a resource; requires the unique ID
+- OPTIONS: get metadata about a resource; usually returns only HTTP headers.
+- **Status Codes**:
+- 1xx: informational
+- 2xx: Success
+- 3xx: redirect
+- 4xx: client errors
+- 5xx: server errors
+- **Examples
+- 100 continue
+- 200 success
+- 201 created
+- 204 no content
+- 304 not modified
+- 307 permanent redirect
+- 308 temporary redirect
+- 400 bad request
+- 401 unauthorized
+- 403 forbidden
+- 404 not found
+- 408 request timeout
+- 409 conflict
+- 418 I'm a teapot
+- 429 too many requests
+- 500 internal server error
+- 503 service unavailable
+- **HTTP Headers**
+- Metadata about a request or response
+- examples: authorization: token authorizing user, accept: format the client accepts, content-type: format of the content being sent, cookie: key-value pairs generated by the server and stored on the client, host: domain name of the server, origin: indenities the origin that cause the request, access-contorl-allow-origin: server response of what origins can make a request, content-length: number of bytes contained in the response, cache-control: tells client how to cache, user-agent: client application making the request
+- **Body**
+- format dfined by the content-type header
+- HTML, image, JSON, JavaScript are examples
+- client specifies accepted formats using the accept headers
+- **Cookies**
+- generated by the server, passed to the client, and returned in subsequent requests
+- used for tracking state, user preferences, authentication credentials
+
+### SOP and CORS
+- **Same Origin Policy**
+- restricts JavaScript requests to a domain only if it matches the domain the user is currently viewing.
+- SOP enhances security but introduces challenges for building web applications that interact with multiple domains.
+- **Cross-Origin Resourse Sharing (CORS)**
+- addresses SOP limitations
+- allows client to specify the origin of a request and lets the server respond with allowed origins
+- may allow all origins (*) or specifiy certain origins)
+
+### Fetch
+- ability to make HTTP requests from JavaScript
+- **Fetch basics**
+- fetch function takes a URL and returns a promise
+- promises' callback function is asynchronously invoked when the requested URL content is obtained.
+- if the content is of type application/json, the json function on the response object can be used to convert it to a JavaScript Object.
+- Example Request: fetch('https://api.quotable.io/random')
+  .then((response) => response.json())
+  .then((jsonResponse) => {
+    console.log(jsonResponse);
+  });
+
+- Example Response: {
+  "content": "Never put off till tomorrow what you can do today.",
+  "author": "Thomas Jefferson"
+
+}
+-Post request, population options parameter with the HTTP method and headers: fetch('https://jsonplaceholder.typicode.com/posts', {
+  method: 'POST',
+  body: JSON.stringify({
+    title: 'test title',
+    body: 'test body',
+    userId: 1,
+  }),
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
+})
+  .then((response) => response.json())
+  .then((jsonResponse) => {
+    console.log(jsonResponse);
+  });
+
+  ### Service Design
+  - **Service Design Overview**
+  - web services play a crucial role in web applications, handling tasks like user authentication, session tracking, data storage, analysis, and connecting with peers
+  - well-designed contributes to increased productivity, user satisfaction, and cost efficiency
+  - **Model and Sequence Diagrams**
+  - model primary objects and their interactions
+  - use sequence diagrams to illustrate object interactions
+  - **Leveraging HTTP**
+  - design influenced by HTTP verbs
+  - leverage HTTP infrastructure for caching, edge servers, and replication servers to enhance performance and resilience
+  - **Endpoints Design**
+  - service endpoints are API entry points, each serving a specific purpose
+  - **Exposing Endpoints**
+  - three common models, RPC, REST, and GraphQL
+  - RPC (remote procedure calls): simple functional calls often using the POST HTTP verb, mapping directly to server-side functions
+  - REST (representational state transfer): utilizes HTTP principles, focusing on resources and their state changes. optimizes caching
+  - GraphQL: emphasizes data manipulation through queries, reducing the need for multiple REST or RPC calls. One query endpoint.
+
+## Node.js
+- application for deploying JS outisde of a browser, JS can power your entire technology stack.
+- Took the V8 engine and ran it inside of the console application. V8 reads the code and executes it.
+- NVM = node version manager
+- node -v to check that it is installed
+- pass JS file to node
+- NPM = node package manager, knkows how to access repository of preexisting packages. npm init -y to accept defaults. used to install and manage JS packages.
+- package.json contains metadata (name and default entry JS file), scripts (commands that you can execute to run, test, or distribute code), and dependencies (different packages).
+
+## Express
+- **introduction**
+- express is a node package that provides enhanced features
+- to set up: npm install express
+- create an application by requiring and calling the express constructor:
+- const express = require('express');
+const app = express();
+app.listen(8080);
+- **Defining routes**
+- revolves around http routing and middleware functions
+- use HTTP verbs on the app object to define routes
+- consist of URL patterns and callback functions
+- path parameters, previxed with : allow dynamic URL patterms
+- example:
+- app.get('/store/:storeName', (req, res, next) => {
+  res.send({ name: req.params.storeName });
+});
+- **Middleware in express**
+- adds functionality
+- follows mediator/middleware pattern
+- express provides built-in middleware for routing, authentication, sessions, etc.
+- middleware functions using app.use
+- pattern: function mddilewareName(req, res, next)
+- example:
+- app.use((req, res, next) => {
+  console.log(req.originalUrl);
+  next();
+});
+- **Built-in Middleware**
+- include express.static for serving static files
+- order of middleware addiction determines hte order of execution
+- example:
+- app.use(express.static('public'));
+-  **Third-party Middleware**
+-  installed using NPM and include in project
+-  ex. cookie-parser for handling cookies
+-  example:
+-  const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+- **Error handling middleware**
+- take an additional err parameter
+- example:
+- app.use((err, req, res, next) => {
+  res.status(500).send({ type: err.name, message: err.message });
+});
+- **full example**
+- const express = require('express');
+const cookieParser = require('cookie-parser');
+const app = express();
+// ... (routes, middleware, error handling)
+const port = 8080;
+app.listen(port, function () {
+  console.log(`Listening on port ${port}`);
+});
+
+### PM2
+- **Intro**
+- to keep programs running persistently, register them as daemons
+- PM2 is a tool that manages node.js processes, ensuring they run continuously
+- **PM2 Commands**
+- pm2 ls - list all hosted node processes
+- pm2 monit - visual monitor
+- pm2 start index.js -n <name> - add a new process with an explicit name
+- pm2 start index.js -n <name> -- <port> - add a new process with an explicit name and port parameter
+- pm2 stop <name> - stop a process
+- pm2 restart <name>
+- pm2 delete <name>
+- pm2 delete all
+- pm2 save
+- pm2 restart all
+- pm2 restart <name> --update-env - reload process and update Node versio nto the current environment definition
+- pm2 update
+- pm2 start <file.js> --watch --ignore-wathc="node_modules" - automatically reload service when index.js changes
+- pm2 describe <name>
+- pm2 startup
+- pm2 logs <name>
+- pm2 env <id>
+- **Registering a new web service**
+- add a rule to the caddyfile for directing requests to the new subdomain
+- create a directory and add files for the new web service
+- configure pm2 to host the new web service
+
+  ### Data Services
+  - to query for documents using MongoDP use find fucntion on the collection object. aysnchronous so use await keyword
+  - no parameters, return entire collection
+  - $gt is greater than
+  - $lt is less than
+ 
+ ### Authorization SErvices
+  - **cookie**
+  - domain: specifies the purpose to which the cookie belongs, limits the cookie to be sent only to specified domain and its subdomains
+  - path: defines the URL path for which the cookie is valid, restricts the cookie to be sent only for requests matching the specified path
+  - samesite: manages when cookies should be sent with cross-site requests, helps prevent cross-site request forgery (CSRF) attack by controlling when cookies are sent the requests initiated by third-party websites. strict, lax, none. will only return the cookie to the domain that generated it.
+  - HTTPOnly: enhances security by preventing client-side scripts from accssing the cookie. When set, the cookie is not accessible through the document.cookie API in Js. tells the browser to not allow JS running on the browser to read the cookie
+  - Secure: requires HTTPs to be used when sending the cookie backto the server.
+ 
+### Account creation and login
+- store users in Mongo
+- getUser and createUser functions
+- uuid package to generate authentication tokens
+- cryptographically hash the password. hash the login password and compare it to stored hash
+- bcrypt package
+- pass authentication token to the browser
+- bcrypt.compare
+
+### Websocket
+- after initial connection is made and upgraded to a websocket connection the relationship changes to a peer-to-peer connection where either party can efficiently sned data at any time.
+- only between two parties
+- create a websocket object by specifying the port you want to communicate on
+- send messages with send function
+- register callback using the onmessage function to receive messages
+- ws package is used to create a websocketserver
+-  **Chat client**
+-  provides input for user's name and input for creating messages and an element to display the messages that are sent and received
+-  JS provides interaction with the DOM
+-  event listener on name input and disable if the name is empty.
+-  add a listener that watch for the Enter keystroke
+-  window.location.protocol... non-secure http ws, otherwise wss
+-  window.location.host, connect the websocket
+-  add listener for onopen event
+-  ping and pong to keep the connection alive
+
+### Web Frameworks
+- react combines JS and HTML into its component format. CSS declared outside of the JSX file.
+- JSX is a syntax extension for JS used with react to describe what the UI should look like. allows you to write HTML in js. curly braces are used for embedding JS expressions. dynamically include values, variables, or JS expressions.
+
+
+### React
+- **JSX**
+- converted into valid HTML and JS using Babel. Both HTML and JS in a single representation.
+- **Components**
+- allow you to modularize the functionality of your application
+- generate user interface using render function to insert into the component HTML element
+- **State**
+- component can have internal state. created by calling react.usestate function
+- returns a variable that contains the current state and a function to update the state
+-  **Toolchains**
+-  functional pieces include:
+-  code repository - github
+-  linter
+-  prettier
+-  transpiler - vite, ESbuild, postcss
+-  polyfill
+-  bundler - rollup
+-  minifier
+-  testing
+-  deployment
+-  **Hooks**
+-  allow react function style components to do everythign a class style component can do + more
+-  useEffect hook - allows you to represent lifecycle events. For example, run a function every time the component completes rendering.
+-  useful for creating side effects for things.
+-  **Hook Dependencies**
+-  only used in certain times, pass an array of dependencies as a second parameter to the useEffect
+-  empty array hook is only called if the component is first rendered.
+
+### Vite
+- bundles code quickly
+- great debugging support
+- allows you to support JSX, TypeScript, and different CSS flavors
+- ./private
+- index.html - primary page, starting point to load all of the JSX components
+- packag.json - npm definition for package dependencies and script commands. what maps npm run dev to start up vite
+- package-lock.json - version constraints for included packages
+- vite.config.js - configuration setting for vite. specifically this sets up react for development.
+- ./public
+- vite.svg
+- ./src
+- main.jsx - entry point for code execution, loads APP component
+- index.css - css for application
+- app.jsx jsx for application component
+- app.css - css for top level app component
+- ./src/assets
+- react.svg
+- index.html points to main.jsx points to app.jsx
+- npm rund build execute build scrip and invokes vite CLI (command line interface)
